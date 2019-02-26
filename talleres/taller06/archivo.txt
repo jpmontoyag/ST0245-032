@@ -1,0 +1,47 @@
+package editortexto;
+
+import java.util.Scanner;
+
+public class EditorTexto {
+
+    //Atributos
+    private static int sizeA = 10;
+    private static int Ocup = 0;
+    private static char Editor[] = new char[sizeA];
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        LeerLiena();
+    }
+
+    public static void LeerLiena() {
+        String a = sc.next();
+        AddEditor(a);
+    }
+
+    public static void AddEditor(String a) {
+        //La palabra cabe en el size actual
+        int n = Ocup-1;
+        if (a.length() <= sizeA && a.length() <= (sizeA - n)) {
+            if (Ocup != 0) {
+                for (int i = 0; i < n; i++) {
+                    Editor[a.length() + i + 1] = Editor[i];
+                }
+            }
+
+            for (int i = 0; i < a.length(); i++) {
+                Editor[i] = a.charAt(i);
+            }
+        }
+        MostrarEditor();
+    }
+
+    public static void MostrarEditor() {
+        for (char x : Editor) {
+            System.out.print(x);
+        }
+        System.out.println("");
+        LeerLiena();
+    }
+
+}
